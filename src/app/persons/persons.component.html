@@ -1,0 +1,72 @@
+<div class="table-container">
+    <div class="flex">
+        <div class="flex-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Person name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Country ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of persons; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{person.name}}</td>
+                        <td>{{person.email}}</td>
+                        <td>{{person.address}}</td>
+                        <td>{{person.country}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="flex-1">
+            <div class="form-container">
+                <h3>Create Person</h3>
+
+                <form [formGroup]="personForm" (ngSumbit)="postPersonSubmitted()">
+                    <div class="form-field flex">
+                        <div class="w-25">
+                            <label for="personName" class="form-label pt">Person name</label>
+                        </div>
+                        <div class="flex-1">
+                            <input type="text" class="form-input" formControlName="PersonName" />
+                            <span class="tex-red" *ngIf="(postPerson_personNameControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personNameControl.errors?.['required'])">Please fill in Person name!</span>
+
+                            <input type="text" class="form-input" formControlName="Email" />
+                            <span class="tex-red" *ngIf="(postPerson_personEmailControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personEmailControl.errors?.['required'])">Please fill in Email!</span>
+
+                            <input type="text" class="form-input" formControlName="Gender" />
+                            <span class="tex-red" *ngIf="(postPerson_personGenderControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personGenderControl.errors?.['required'])">Please fill in Gender!</span>
+
+                            <input type="text" class="form-input" formControlName="Address" />
+                            <span class="tex-red" *ngIf="(postPerson_personAddressControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personAddressControl.errors?.['required'])">Please fill in Address!</span>
+
+                            
+                            <input type="text" class="form-input" formControlName="Country" />
+                            <span class="tex-red" *ngIf="(postPerson_personCountryControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personCountryControl.errors?.['required'])">Please fill in Country!</span>
+
+                            <input type="text" class="form-input" formControlName="PersonalId" />
+                            <span class="tex-red" *ngIf="(postPerson_personPersonalIdControl.touched || isPostPersonFormSubmitted) &&
+                            (postPerson_personPersonalIdControl.errors?.['required'])">Please fill in Personal Id!</span>
+                        </div>
+
+                        <div class="w-25">
+                            <div class="flex-1">
+                                <button class="button button-green">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
